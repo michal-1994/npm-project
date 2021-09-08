@@ -4,7 +4,8 @@
   "scripts": {
     "start": "webpack serve",
     "watch": "webpack --watch",
-    "build": "webpack"
+    "build": "NODE_ENV-production webpack",
+    "build-dev": "webpack"
   },
   "repository": {
     "type": "git",
@@ -16,6 +17,9 @@
   },
   "homepage": "https://github.com/michal-1994/npm-project#readme",
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.4",
+    "babel-loader": "^8.2.2",
     "html-webpack-plugin": "^5.3.2",
     "webpack": "^5.52.0",
     "webpack-cli": "^4.8.0",
