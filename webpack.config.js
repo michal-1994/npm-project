@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 let mode = "development";
 let target = "web";
 
@@ -11,15 +12,25 @@ module.exports = {
     mode: mode,
     target: target,
 
+    output: {
+        assetModuleFilename: "images/[hash][ext][query]",
+    },
+
     module: {
         rules: [
             {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: "asset",
+            },
+            {
                 test: /\.(s[ac]|c)ss$/i,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader, 
+                    },
                     "css-loader", 
                     "postcss-loader",
-                    "sass-loader"
+                    "sass-loader",
                 ],
             },
             {
@@ -33,7 +44,10 @@ module.exports = {
     },
 
     plugins: [
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin({
+            template: "./src/index.html",
+        })
     ],
 
     devtool: "source-map",

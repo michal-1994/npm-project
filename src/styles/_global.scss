@@ -4,3 +4,12 @@ body {
     background-color: variables.$bg;
     color: var(--text);
 }
+
+.box {
+    width: 400px;
+    height: 400px;
+    border: 1px solid red;
+    background: url("../images/light.jpg");
+    background-position: center;
+    background-size: cover;
+}
