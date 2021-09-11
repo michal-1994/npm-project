@@ -2,6 +2,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 let mode = "development";
 let target = "web";
+const webpack = require('webpack');
 
 if (process.env.NODE_ENV === "production") {
     mode = "production";
@@ -47,7 +48,12 @@ module.exports = {
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
             template: "./src/index.html",
-        })
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
+        }),
     ],
 
     devtool: "source-map",

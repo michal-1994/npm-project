@@ -1,0 +1,50 @@
+@use "variables";
+
+.owl-buttons {
+    display: none;
+}
+
+.owl-carousel:hover .owl-buttons {
+    display: block;
+}  
+
+.owl-item {
+    text-align: center;
+}
+
+.owl-theme .owl-controls .owl-buttons div {
+    background: transparent;
+    color: #869791;
+    font-size: 40px;
+    line-height: 300px;
+    margin: 0;
+    padding: 0 60px;
+    position: absolute;
+    top: 0;
+}
+
+.owl-nav {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    .owl-prev, .owl-next {
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        background-color: inherit;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+            font-size: 100px;
+            color: variables.$secondary-color;
+        }
+    }
+    .owl-prev {
+        left: 0;
+    }
+    .owl-next {
+        right: 0;
+    }
+}

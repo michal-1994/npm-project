@@ -1,9 +1,9 @@
 @use "variables";
+@use "owlcarousel";
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
 
 // Global
-html, body {
-    height: 100%;
+html {
     font-size: 16px;
 }
 
@@ -15,6 +15,19 @@ body {
     line-height: 1.7;
     margin: 0;
     padding: 0;
+    position: relative;
+
+    &::after {
+        position: absolute;
+        content: '';
+        background-image: url("../images/entrance-cut.png");
+        top: 0px;
+        left: 0px;
+        height: 250px;
+        width: 250px;
+        background-size: cover;
+        z-index: -1;
+    }
 }
 
 ul {
@@ -71,38 +84,17 @@ button {
     }
 }
 
-.content {
-    min-height: calc(100% - 268px);
-    overflow: hidden;
-    position: relative;
-
-    &::after {
-        position: absolute;
-        content: '';
-        background-image: url("../images/entrance-cut.png");
-        top: 0px;
-        left: 0px;
-        height: 250px;
-        width: 250px;
-        z-index: -1;
-        background-size: cover;
-    }
-}
-
 // Entrance
 .entrance {
     padding: 50px 0 77px;
+    overflow: hidden;
 
-    .entrance__article {
-
-        p {
-            &:nth-child(2) {
-                font-family: 'PlayfairDisplay', sans-serif;
-                font-weight: normal;
-                color: variables.$tx-dark;
-            }
-        }
+    .entrance__article p:nth-child(2) {
+        font-family: 'PlayfairDisplay', sans-serif;
+        font-weight: normal;
+        color: variables.$tx-dark;
     }
+
     .entrance__img {
         background: url("../images/entrance-green.png");
         background-repeat: no-repeat;
@@ -125,50 +117,48 @@ button {
     }
 }
 
-// Services
-.services {
+// Donate
+.donate {
     background-color: variables.$bg-shadow;
     padding-top: 77px;
+    position: relative;
 
     .container {
         text-align: center;
     }
 
-    .services__list {
+    .donate__list>div {
+        margin-bottom: 25px;
 
-        >div {
-            margin-bottom: 25px;
+        span {
+            width: 89px;
+            height: 89px;
+            border-radius: 50%;
+            box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.25);
+            background-color: variables.$bg-services-list;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 30px;
+            color: variables.$primary-color;
+            font-size: 2.25rem;
+            font-family: 'Lato', sans-serif;
+            font-weight: bold;
+            transition: .3s all linear;
 
-            span {
-                width: 89px;
-                height: 89px;
-                border-radius: 50%;
-                box-shadow: 0px 2px 5px 1px rgba(0,0,0,0.25);
-                background-color: variables.$bg-services-list;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin: 0 auto 30px;
-                color: variables.$primary-color;
-                font-size: 2.25rem;
-                font-family: 'Lato', sans-serif;
-                font-weight: bold;
+            &:hover {
+                opacity: .9;
+                box-shadow: 0px 2px 5px 1px variables.$primary-color;
                 transition: .3s all linear;
-
-                &:hover {
-                    opacity: .9;
-                    box-shadow: 0px 2px 5px 1px variables.$primary-color;
-                    transition: .3s all linear;
-                    cursor: pointer;
-                }
+                cursor: pointer;
             }
-            p {
-                text-align: center;
-            }
+        }
+        p {
+            text-align: center;
         }
     }
 
-    .services__buttons {
+    .donate__buttons {
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -189,37 +179,24 @@ button {
         }
     }
 
-    .services__info {
+    .donate__info {
         margin: 0;
         padding-bottom: 10px;
         text-align: center;
-        z-index: 10;
     }
-}
 
-// Gallery
-.gallery {
-    background-color: variables.$bg-shadow;
-    padding: 50px 0 183px;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    background-image: url("../images/gallery-middle.png");
-    background-repeat: no-repeat;
-    background-position: right;
-
-    .gallery__donate {
+    .donate__submit {
         padding: 4px 45px;
         font-size: 20px;
         margin: 60px auto 20px;
     }
 
-    .gallery__box {
+    .donate__carousel--box {
         background: rgb(24,24,24);
         background: linear-gradient(0deg, rgba(24,24,24,1) 0%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0.5) 100%);
-        padding: 125px 20px 20px 20px;
+        padding: 130px 20px 20px 20px;
         text-align: center;
-        z-index: 5;
+        margin: 0 40px;
         
         h4 {
             color: variables.$light;
@@ -230,6 +207,31 @@ button {
             color: variables.$light;
 
         }
+    }
+
+    >div:nth-child(2) {
+        background-color: variables.$bg-shadow;
+        padding: 50px 0 150px;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        background-image: url("../images/gallery-middle.png");
+        background-repeat: no-repeat;
+        background-position: right;
+
+        // ???
+        // &:after {
+        //     position: absolute;
+        //     overflow: hidden;
+        //     background: url("../images/gallery-back.png");
+        //     background-repeat: no-repeat;
+        //     height: 200px;
+        //     width: 200px;
+        //     content: '';
+        //     bottom: 0;
+        //     left: 5%;
+        //     z-index: 0;
+        // }
     }
 }
 
@@ -256,25 +258,25 @@ button {
         color: variables.$primary-color;
     }
 
-    .footer__media li {
-        a {
-            height: 44px;
-            width: 44px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            background-color: variables.$bg-media-icons;
+    .footer__media li a {
+        height: 44px;
+        width: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background-color: variables.$bg-media-icons;
+
+        i {
+            color: variables.$tx-media-icons;
+        }
+
+        &:hover {
+            background-color: variables.$primary-color;
+            color: variables.$light;
 
             i {
-                color: variables.$tx-media-icons;
-            }
-            &:hover {
-                background-color: variables.$primary-color;
                 color: variables.$light;
-                i {
-                    color: variables.$light;
-                }
             }
         }
     }
@@ -282,21 +284,16 @@ button {
 
 // RWD Medium size
 @media(min-width: 768px) {
-    .content {
-        min-height: calc(100% - 189px);
-    
-        &::after {
-            position: absolute;
-            content: '';
-            background-image: url("../images/entrance-cut.png");
-            top: 40px;
-            left: 25px;
-            height: 468px;
-            width: 442px;
-            z-index: -1;
-        }
+    body::after {
+        position: absolute;
+        content: '';
+        background-image: url("../images/entrance-cut.png");
+        top: 40px;
+        left: 25px;
+        height: 468px;
+        width: 442px;
     }
-
+        
     // Entrance
     .entrance {
         padding: 280px 0 77px;
@@ -304,10 +301,10 @@ button {
         .entrance__article {
             padding: 10px 125px 10px 10px;
         }
+
         .entrance__img {
             min-height: 556px;
     
-            // todo
             &::after {
                 width: 200%;
             }
@@ -320,9 +317,9 @@ button {
     }
 
     // Gallery
-    .gallery {
+    .donate>div:nth-child(2) {
         background-color: variables.$bg-shadow;
-        padding: 50px 0 183px;
+        padding: 50px 0 150px;
         position: relative;
         overflow: hidden;
         text-align: center;
@@ -330,26 +327,35 @@ button {
         background-repeat: no-repeat;
         background-position: right;
 
-        &::after, &:before {
-            position: absolute;
-            content: '';
-            bottom: 183px;
-            overflow: hidden;
-            background-repeat: no-repeat;
-        }
+        .donate__carousel {
+            height: 500px;
+            max-width: 1450px;
+            margin: auto;
+            display: flex;
+            align-items: end;
+        }     
 
         &:after {
             background: url("../images/gallery-left.png");
             left: 0;
-            width: 783px;
             height: 598px;
+            background-position-x: left;
         }
 
         &:before {
             background: url("../images/gallery-right.png");
             right: 0;
-            width: 821px;
             height: 547px;
+            background-position-x: right;
+        }
+
+        &::after, &:before {
+            position: absolute;
+            content: '';
+            bottom: 150px;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            width: 43%;
         }
     }
 
